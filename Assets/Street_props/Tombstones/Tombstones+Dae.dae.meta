@@ -1,0 +1,296 @@
+fileFormatVersion: 2
+guid: 84a51c74e86f20b4d8932672ff107140
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: _1
+    100002: _2
+    100004: _3
+    100006: _4
+    100008: Cap_1
+    100010: Cap_1 1
+    100012: Cap_1 2
+    100014: Cap_1 3
+    100016: Cap_1 4
+    100018: Cap_1 5
+    100020: Cap_1 6
+    100022: Cap_1 7
+    100024: Cap_2
+    100026: Cap_2 1
+    100028: Cap_2 2
+    100030: Cap_2 3
+    100032: Cap_2 4
+    100034: Cap_2 5
+    100036: Cap_2 6
+    100038: Cap_2 7
+    100040: Cube
+    100042: Cube 1
+    100044: Cube 2
+    100046: Cube 3
+    100048: Extrude
+    100050: Extrude 1
+    100052: Extrude 2
+    100054: Extrude 3
+    100056: Extrude.1
+    100058: Extrude.1 1
+    100060: Extrude.1 2
+    100062: Extrude.2
+    100064: Extrude.3
+    100066: Extrude.3 1
+    100068: Extrude.3 2
+    100070: Extrude.4
+    100072: Extrude.6
+    100074: Floor
+    100076: Lensflare_Source
+    100078: Moon
+    100080: Moon_Light
+    100082: Physical_Sky
+    100084: Shadow_Plane
+    100086: Sky_Dome
+    100088: Sky_Null
+    100090: Sun
+    100092: Sun_light
+    100094: Text
+    100096: Text 1
+    100098: Text 2
+    100100: Text 3
+    100102: //RootNode
+    400000: _1
+    400002: _2
+    400004: _3
+    400006: _4
+    400008: Cap_1
+    400010: Cap_1 1
+    400012: Cap_1 2
+    400014: Cap_1 3
+    400016: Cap_1 4
+    400018: Cap_1 5
+    400020: Cap_1 6
+    400022: Cap_1 7
+    400024: Cap_2
+    400026: Cap_2 1
+    400028: Cap_2 2
+    400030: Cap_2 3
+    400032: Cap_2 4
+    400034: Cap_2 5
+    400036: Cap_2 6
+    400038: Cap_2 7
+    400040: Cube
+    400042: Cube 1
+    400044: Cube 2
+    400046: Cube 3
+    400048: Extrude
+    400050: Extrude 1
+    400052: Extrude 2
+    400054: Extrude 3
+    400056: Extrude.1
+    400058: Extrude.1 1
+    400060: Extrude.1 2
+    400062: Extrude.2
+    400064: Extrude.3
+    400066: Extrude.3 1
+    400068: Extrude.3 2
+    400070: Extrude.4
+    400072: Extrude.6
+    400074: Floor
+    400076: Lensflare_Source
+    400078: Moon
+    400080: Moon_Light
+    400082: Physical_Sky
+    400084: Shadow_Plane
+    400086: Sky_Dome
+    400088: Sky_Null
+    400090: Sun
+    400092: Sun_light
+    400094: Text
+    400096: Text 1
+    400098: Text 2
+    400100: Text 3
+    400102: //RootNode
+    2100000: Stone_Marble_Indian
+    2100002: No Name
+    2100004: Marble_05
+    2100006: Marble_03
+    2100008: Stone_Marble_Damby
+    2300000: Cap_1
+    2300002: Cap_1 1
+    2300004: Cap_1 2
+    2300006: Cap_1 3
+    2300008: Cap_1 4
+    2300010: Cap_1 5
+    2300012: Cap_1 6
+    2300014: Cap_1 7
+    2300016: Cap_2
+    2300018: Cap_2 1
+    2300020: Cap_2 2
+    2300022: Cap_2 3
+    2300024: Cap_2 4
+    2300026: Cap_2 5
+    2300028: Cap_2 6
+    2300030: Cap_2 7
+    2300032: Cube
+    2300034: Cube 1
+    2300036: Cube 2
+    2300038: Cube 3
+    2300040: Extrude
+    2300042: Extrude 1
+    2300044: Extrude 2
+    2300046: Extrude 3
+    2300048: Extrude.1
+    2300050: Extrude.1 1
+    2300052: Extrude.1 2
+    2300054: Extrude.2
+    2300056: Extrude.3
+    2300058: Extrude.3 1
+    2300060: Extrude.3 2
+    2300062: Extrude.6
+    3300000: Cap_1
+    3300002: Cap_1 1
+    3300004: Cap_1 2
+    3300006: Cap_1 3
+    3300008: Cap_1 4
+    3300010: Cap_1 5
+    3300012: Cap_1 6
+    3300014: Cap_1 7
+    3300016: Cap_2
+    3300018: Cap_2 1
+    3300020: Cap_2 2
+    3300022: Cap_2 3
+    3300024: Cap_2 4
+    3300026: Cap_2 5
+    3300028: Cap_2 6
+    3300030: Cap_2 7
+    3300032: Cube
+    3300034: Cube 1
+    3300036: Cube 2
+    3300038: Cube 3
+    3300040: Extrude
+    3300042: Extrude 1
+    3300044: Extrude 2
+    3300046: Extrude 3
+    3300048: Extrude.1
+    3300050: Extrude.1 1
+    3300052: Extrude.1 2
+    3300054: Extrude.2
+    3300056: Extrude.3
+    3300058: Extrude.3 1
+    3300060: Extrude.3 2
+    3300062: Extrude.6
+    4300000: Cube
+    4300002: Extrude.3
+    4300004: Cap_1
+    4300006: Cap_2
+    4300008: Extrude
+    4300010: Cap_1
+    4300012: Cap_2
+    4300014: Extrude.1
+    4300016: Extrude.3
+    4300018: Cap_1
+    4300020: Cap_2
+    4300022: Extrude
+    4300024: Cap_1
+    4300026: Cap_2
+    4300028: Cube
+    4300030: Extrude.1
+    4300032: Extrude.3
+    4300034: Cap_1
+    4300036: Cap_2
+    4300038: Extrude
+    4300040: Cap_1
+    4300042: Cap_2
+    4300044: Cube
+    4300046: Extrude.6
+    4300048: Extrude.2
+    4300050: Cap_1
+    4300052: Cap_2
+    4300054: Extrude
+    4300056: Cap_1
+    4300058: Cap_2
+    4300060: Cube
+    4300062: Extrude.1
+    10800000: Lensflare_Source
+    10800002: Moon_Light
+    10800004: Sun_light
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
