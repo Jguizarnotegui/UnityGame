@@ -22,10 +22,7 @@ public class RestartOnKeyStroke : MonoBehaviour {
         defaultScale = restartHealth.transform.localScale;
         playerMoving = GetComponent<FPSInput>();
         playerShooting = GetComponentInChildren<RayShooter>();
-
     }
-	
-  
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.R))
@@ -39,7 +36,6 @@ public class RestartOnKeyStroke : MonoBehaviour {
             restartHealth.isDead = false;
             playerShooting.enabled = true;
             playerMoving.enabled = true;
-
         }
 	}
 }
