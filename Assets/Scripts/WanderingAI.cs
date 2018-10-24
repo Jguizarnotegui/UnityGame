@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //Controls enemy movement and shooting for both enemies, enemy 1 follows, enemy 2 doesn't
 public class WanderingAI : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class WanderingAI : MonoBehaviour
     private GameObject _fireball;
 
     public Transform detectPlayer;
+    NavMeshAgent agent;
     public float closeDistance = 15.0f;
 
     private void Start()
@@ -29,6 +31,8 @@ public class WanderingAI : MonoBehaviour
         detectPlayer = player.transform;
         _animator = GetComponent<Animator>();
         _animator.SetBool("playerClose", playerClose);
+        agent = GetComponent<NavMeshAgent>();
+
     }
     // Use this for initialization
     void Update()
@@ -49,12 +53,13 @@ public class WanderingAI : MonoBehaviour
                 if (Physics.SphereCast(ray, 0.75f, out hit))
                 {
                     GameObject hitObject = hit.transform.gameObject;
-                    if (hitObject.GetComponent<PlayerCharacter>() && playerHealth._health > 0 /*&& not touching wall*/)// If raycast hits player and the player is alive then shoot fireball at player
+                    if (hitObject.GetComponent<PlayerCharacter>() && playerHealth._health > 0 )// If raycast hits player and the player is alive then shoot fireball at player
                     {
                         if (enemyType)
                         {
-                            float step = speed * Time.deltaTime;// Speed at which player is followed                
-                            transform.position = Vector3.MoveTowards(transform.position, detectPlayer.position, step);//Moves toward player but goes through wall to player
+                            agent.SetDestination(detectPlayer.position);
+                            //float step = speed * Time.deltaTime;// Speed at which player is followed                
+                            //transform.position = Vector3.MoveTowards(transform.position, detectPlayer.position, step);//Moves toward player but goes through wall to player
                             playerClose = true;
                             _animator.SetBool("playerClose", playerClose);
                             //Debug.Log("Player Close: " + playerClose);
