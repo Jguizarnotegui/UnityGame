@@ -7,13 +7,14 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField]
     private GameObject enemyPrefab;
-    //[SerializeField]
-    //private GameObject enemy2Prefab;
+    [SerializeField]
+    private GameObject enemy2Prefab;
     //[SerializeField]
     //private GameObject bystanderPrefab;
     private GameObject _enemy;
-    //private GameObject _enemy2;
+    private GameObject _enemy2;
     //private GameObject _bystander;
+    public Transform[] spawnPoints;
 
     // Randomly generate 1 to 3 enemies
     private int enSpawn;
@@ -30,10 +31,9 @@ public class SceneController : MonoBehaviour
     void Update()
     {
         int enemy1Count = GameObject.FindGameObjectsWithTag("Enemy1").Length;
-        //int enemy2Count = GameObject.FindGameObjectsWithTag("Enemy2").Length;
+        int enemy2Count = GameObject.FindGameObjectsWithTag("Enemy2").Length;
         //int bystanderCount = GameObject.FindGameObjectsWithTag("Bystander").Length;
-        enemyCount = enemy1Count;
-            //+ enemy2Count + bystanderCount;
+        enemyCount = enemy1Count + enemy2Count; //+ bystanderCount;
 
         if (enemyCount < 5 || enemyCount < 7)
         {
@@ -43,11 +43,10 @@ public class SceneController : MonoBehaviour
             for(int i = 0; i <= enSpawn; i++)
             {
                 //Debug.Log("Enemy to spawn: " + enemyToSpawn);
-                enemyToSpawn = 1;
-                    //Random.Range(1, 4);
+                enemyToSpawn = Random.Range(1, 3);
                 // Randomize enemy1 spawn location
-                float Enemy1x = Random.Range(-22, 18);
-                float Enemy1z = Random.Range(-22, 22);
+                float Enemy1x = Random.Range(-20, 18);
+                float Enemy1z = Random.Range(-20, 20);
 
                 if (enemyToSpawn == 1)
                 {
@@ -57,14 +56,18 @@ public class SceneController : MonoBehaviour
                     _enemy.transform.Rotate(0, angle, 0);
                     //Debug.Log("Enemy 1 spawned");
                 }
-                //if(enemyToSpawn == 2)
-                //{
-                //    _enemy2 = Instantiate(enemy2Prefab) as GameObject;
-                //    _enemy2.transform.position = new Vector3(Enemy1x, 1.1f, Enemy1z);
-                //    float angle = Random.Range(0, 360);
-                //    _enemy2.transform.Rotate(0, angle, 0);
-                //    Debug.Log("Enemy 2 spawned");
-                //}
+                if(enemyToSpawn == 2)
+                {
+                    int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+
+                    Instantiate(_enemy2, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+                    _enemy2 = Instantiate(enemy2Prefab) as GameObject;
+                    // Spawn in one of the spawn points
+                    _enemy2.transform.position = new Vector3(Enemy1x, 1.1f, Enemy1z);
+                    float angle = Random.Range(0, 360);
+                    _enemy2.transform.Rotate(0, angle, 0);
+                    //Debug.Log("Enemy 2 spawned");
+                }
                 //if(enemyToSpawn == 3)
                 //{
                 //    _bystander = Instantiate(bystanderPrefab) as GameObject;

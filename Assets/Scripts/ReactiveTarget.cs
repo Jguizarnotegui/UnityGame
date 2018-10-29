@@ -14,14 +14,15 @@ public class ReactiveTarget : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animator.SetInteger("enemyHealth", enemyHealth);
     }
-
     public void ReactToHit()
     {
         WanderingAI behavior = GetComponent<WanderingAI>();
         if (behavior != null)
         {
             enemyHealth -= 1;
-            if(enemyHealth == 0)
+            _animator.SetInteger("enemyHealth", enemyHealth);
+            Debug.Log("The enemyHealth: " + enemyHealth);
+            if (enemyHealth == 0)
             {
                 behavior.SetAlive(false);
                 StartCoroutine(Die());
@@ -30,11 +31,8 @@ public class ReactiveTarget : MonoBehaviour
     }
     private IEnumerator Die()
     {
-        //this.transform.Rotate(-75, 0, 0);
         _animator.SetInteger("enemyHealth", enemyHealth);
-
         yield return new WaitForSeconds(1.5f);
-
         Destroy(this.gameObject);
     }
 }

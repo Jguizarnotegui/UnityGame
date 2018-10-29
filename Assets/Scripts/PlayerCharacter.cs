@@ -22,7 +22,7 @@ public class PlayerCharacter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _health = 100;
-        _ammo = 30;
+        _ammo = 300;
         playerMoving = GetComponent<FPSInput>();
         playerShooting = GetComponentInChildren<RayShooter>();
 	}
