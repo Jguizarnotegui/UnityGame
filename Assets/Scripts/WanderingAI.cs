@@ -9,13 +9,13 @@ public class WanderingAI : MonoBehaviour
     public float obstacleRange = 5.0f;
     private bool _alive;
     GameObject player;
-    GameObject controller;
+    //GameObject controller;
     PlayerCharacter playerHealth;
     //SceneController enemy;
     //GameObject enemyType;
-    GameObject enemy1;
-    GameObject enemy2;
-    GameObject enemy3;
+    //GameObject enemy1;
+    //GameObject enemy2;
+    //GameObject enemy3;
     private Animator _animator;
     bool playerClose = false;
 
@@ -32,12 +32,12 @@ public class WanderingAI : MonoBehaviour
     {
         _alive = true;
         player = GameObject.FindGameObjectWithTag("Player");
-        controller = GameObject.FindGameObjectWithTag("controller");
+        //controller = GameObject.FindGameObjectWithTag("controller");
         playerHealth = player.GetComponent<PlayerCharacter>();
         //enemy = controller.GetComponent<SceneController>();
-        enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
-        enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
-        enemy3 = GameObject.FindGameObjectWithTag("Bystander");
+        //enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
+        //enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
+        //enemy3 = GameObject.FindGameObjectWithTag("Bystander");
         detectPlayer = player.transform;
         _animator = GetComponent<Animator>();
         _animator.SetBool("playerClose", playerClose);
@@ -78,7 +78,7 @@ public class WanderingAI : MonoBehaviour
                         if (gameObject.tag == "Bystander")
                         {
                             float distance = Vector3.Distance(transform.position, detectPlayer.transform.position);
-                            Debug.Log("Distance: " + distance);
+                            //Debug.Log("Distance: " + distance);
                             //Run away from player
                             if (distance <  closeDistance)
                             {
