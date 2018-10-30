@@ -6896,7 +6896,7 @@ GameObject:
   - component: {fileID: 638173191}
   m_Layer: 0
   m_Name: Controller
-  m_TagString: Untagged
+  m_TagString: controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6916,9 +6916,11 @@ MonoBehaviour:
     type: 2}
   enemy2Prefab: {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba,
     type: 2}
-  spawnPoint1: {fileID: 2118546169}
-  spawnPoint2: {fileID: 0}
-  spawnPoint3: {fileID: 0}
+  bystanderPrefab: {fileID: 1680607057539876, guid: 8143e6aefb5aebb47afdb0df615170a3,
+    type: 2}
+  spawnPoint1: {fileID: 2118546168}
+  spawnPoint2: {fileID: 1267225858}
+  spawnPoint3: {fileID: 1018935036}
   spawnPointToUse: {fileID: 0}
 --- !u!4 &638173192
 Transform:

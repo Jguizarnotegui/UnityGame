@@ -15,6 +15,7 @@ TagManager:
   - spawnPoint1
   - spawnPoint2
   - spawnPoint3
+  - controller
   layers:
   - Default
   - TransparentFX

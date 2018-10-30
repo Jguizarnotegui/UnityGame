@@ -1268,7 +1268,7 @@ MonoBehaviour:
   fireballPrefab: {fileID: 1053051828627960, guid: 4d78d937ce614054fa837f1e557ad343,
     type: 2}
   detectPlayer: {fileID: 0}
-  closeDistance: 8
+  closeDistance: 10
 --- !u!114 &114789817781972970
 MonoBehaviour:
   m_ObjectHideFlags: 1

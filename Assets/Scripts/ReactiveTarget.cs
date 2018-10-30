@@ -21,7 +21,7 @@ public class ReactiveTarget : MonoBehaviour
         {
             enemyHealth -= 1;
             _animator.SetInteger("enemyHealth", enemyHealth);
-            Debug.Log("The enemyHealth: " + enemyHealth);
+            //Debug.Log("The enemyHealth: " + enemyHealth);
             if (enemyHealth == 0)
             {
                 behavior.SetAlive(false);

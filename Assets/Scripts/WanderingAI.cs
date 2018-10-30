@@ -9,8 +9,10 @@ public class WanderingAI : MonoBehaviour
     public float obstacleRange = 5.0f;
     private bool _alive;
     GameObject player;
+    GameObject controller;
     PlayerCharacter playerHealth;
-    GameObject enemyType;
+    //SceneController enemy;
+    //GameObject enemyType;
     GameObject enemy1;
     GameObject enemy2;
     GameObject enemy3;
@@ -30,10 +32,12 @@ public class WanderingAI : MonoBehaviour
     {
         _alive = true;
         player = GameObject.FindGameObjectWithTag("Player");
+        controller = GameObject.FindGameObjectWithTag("controller");
         playerHealth = player.GetComponent<PlayerCharacter>();
+        //enemy = controller.GetComponent<SceneController>();
         enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
         enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
-        enemy3 = GameObject.FindGameObjectWithTag("bystander");
+        enemy3 = GameObject.FindGameObjectWithTag("Bystander");
         detectPlayer = player.transform;
         _animator = GetComponent<Animator>();
         _animator.SetBool("playerClose", playerClose);
@@ -44,12 +48,15 @@ public class WanderingAI : MonoBehaviour
     {
         if (_alive)// If enemy is alive
         {
+            //controller = GameObject.FindGameObjectWithTag("controller");
+            //enemy = controller.GetComponent<SceneController>();
+            detectPlayer = player.transform;
             Vector3 offset = detectPlayer.position - transform.position;// Used to find if player is close
             float sqrLen = offset.sqrMagnitude;
             float angle = Vector3.Angle(offset, transform.forward);// Used to find if player is in front of
             if (sqrLen < closeDistance * closeDistance)// If player close
             {
-                if (angle > 5.0f && enemy1)//if player not in viewing angle
+                if (angle > 5.0f /*&& enemy1*/)//if player not in viewing angle
                 {
                     transform.LookAt(detectPlayer);// Turns to player
                 }
@@ -62,17 +69,27 @@ public class WanderingAI : MonoBehaviour
                     GameObject hitObject = hit.transform.gameObject;
                     if (hitObject.GetComponent<PlayerCharacter>() && playerHealth._health > 0 )// If raycast hits player and the player is alive then shoot fireball at player
                     {
-                        if (enemy1)
+                        if (gameObject.tag == "Enemy1")
                         {
                             agent.SetDestination(detectPlayer.position);
                             //float step = speed * Time.deltaTime;// Speed at which player is followed                
                             //transform.position = Vector3.MoveTowards(transform.position, detectPlayer.position, step);//Moves toward player but goes through wall to player
                         }
-                        if (enemy3)
+                        if (gameObject.tag == "Bystander")
                         {
+                            float distance = Vector3.Distance(transform.position, detectPlayer.transform.position);
+                            Debug.Log("Distance: " + distance);
+                            //Run away from player
+                            if (distance <  closeDistance)
+                            {
+                                //vector player to skeleton
+                                Vector3 dirToPlayer = transform.position - detectPlayer.transform.position;
+                                Vector3 newPos = transform.position + dirToPlayer;
 
+                                agent.SetDestination(newPos);
+                            }
                         }
-                        if (_fireball == null && attackDistance >= sqrLen)
+                        if (_fireball == null && attackDistance >= sqrLen && (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2"))
                         {
                             _animator.SetBool("attackPlayer", true);
                             _fireball = Instantiate(fireballPrefab) as GameObject;// Generate fireball and make it move

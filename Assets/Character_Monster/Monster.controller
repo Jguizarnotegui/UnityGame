@@ -13,31 +13,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: playerInSight
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: atJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: enemyHealth
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: attackPlayer
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -420,10 +420,10 @@ AnimatorStateMachine:
     m_Position: {x: 24, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000011134391328}
-    m_Position: {x: 300, y: 156, z: 0}
+    m_Position: {x: 300, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000011057164478}
-    m_Position: {x: 36, y: 360, z: 0}
+    m_Position: {x: 24, y: 312, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102422756742890812}
     m_Position: {x: 300, y: 312, z: 0}
