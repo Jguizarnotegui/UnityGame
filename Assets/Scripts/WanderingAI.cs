@@ -11,6 +11,9 @@ public class WanderingAI : MonoBehaviour
     GameObject player;
     PlayerCharacter playerHealth;
     GameObject enemyType;
+    GameObject enemy1;
+    GameObject enemy2;
+    GameObject enemy3;
     private Animator _animator;
     bool playerClose = false;
 
@@ -28,12 +31,13 @@ public class WanderingAI : MonoBehaviour
         _alive = true;
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerCharacter>();
-        enemyType = GameObject.FindGameObjectWithTag("Enemy1");
+        enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
+        enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
+        enemy3 = GameObject.FindGameObjectWithTag("bystander");
         detectPlayer = player.transform;
         _animator = GetComponent<Animator>();
         _animator.SetBool("playerClose", playerClose);
         agent = GetComponent<NavMeshAgent>();
-
     }
     // Use this for initialization
     void Update()
@@ -45,8 +49,7 @@ public class WanderingAI : MonoBehaviour
             float angle = Vector3.Angle(offset, transform.forward);// Used to find if player is in front of
             if (sqrLen < closeDistance * closeDistance)// If player close
             {
-
-                if (angle > 5.0f)//if player not in viewing angle
+                if (angle > 5.0f && enemy1)//if player not in viewing angle
                 {
                     transform.LookAt(detectPlayer);// Turns to player
                 }
@@ -59,11 +62,15 @@ public class WanderingAI : MonoBehaviour
                     GameObject hitObject = hit.transform.gameObject;
                     if (hitObject.GetComponent<PlayerCharacter>() && playerHealth._health > 0 )// If raycast hits player and the player is alive then shoot fireball at player
                     {
-                        if (enemyType)
+                        if (enemy1)
                         {
                             agent.SetDestination(detectPlayer.position);
                             //float step = speed * Time.deltaTime;// Speed at which player is followed                
                             //transform.position = Vector3.MoveTowards(transform.position, detectPlayer.position, step);//Moves toward player but goes through wall to player
+                        }
+                        if (enemy3)
+                        {
+
                         }
                         if (_fireball == null && attackDistance >= sqrLen)
                         {

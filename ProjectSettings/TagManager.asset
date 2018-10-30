@@ -12,7 +12,9 @@ TagManager:
   - Enemy2
   - Wall
   - Bystander
-  - staticSpawnPoint
+  - spawnPoint1
+  - spawnPoint2
+  - spawnPoint3
   layers:
   - Default
   - TransparentFX

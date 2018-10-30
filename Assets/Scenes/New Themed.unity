@@ -6916,10 +6916,10 @@ MonoBehaviour:
     type: 2}
   enemy2Prefab: {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba,
     type: 2}
-  spawnPoints:
-  - {fileID: 2118546169}
-  - {fileID: 1267225859}
-  - {fileID: 1018935037}
+  spawnPoint1: {fileID: 2118546169}
+  spawnPoint2: {fileID: 0}
+  spawnPoint3: {fileID: 0}
+  spawnPointToUse: {fileID: 0}
 --- !u!4 &638173192
 Transform:
   m_ObjectHideFlags: 0
@@ -10520,8 +10520,8 @@ GameObject:
   - component: {fileID: 1018935037}
   m_Layer: 0
   m_Name: Point3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: spawnPoint3
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -14444,8 +14444,8 @@ GameObject:
   - component: {fileID: 1267225859}
   m_Layer: 0
   m_Name: Point2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: spawnPoint2
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23711,8 +23711,8 @@ GameObject:
   - component: {fileID: 2118546169}
   m_Layer: 0
   m_Name: Point1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: spawnPoint1
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
