@@ -32,12 +32,7 @@ public class WanderingAI : MonoBehaviour
     {
         _alive = true;
         player = GameObject.FindGameObjectWithTag("Player");
-        //controller = GameObject.FindGameObjectWithTag("controller");
         playerHealth = player.GetComponent<PlayerCharacter>();
-        //enemy = controller.GetComponent<SceneController>();
-        //enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
-        //enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
-        //enemy3 = GameObject.FindGameObjectWithTag("Bystander");
         detectPlayer = player.transform;
         _animator = GetComponent<Animator>();
         _animator.SetBool("playerClose", playerClose);
@@ -48,8 +43,6 @@ public class WanderingAI : MonoBehaviour
     {
         if (_alive)// If enemy is alive
         {
-            //controller = GameObject.FindGameObjectWithTag("controller");
-            //enemy = controller.GetComponent<SceneController>();
             detectPlayer = player.transform;
             Vector3 offset = detectPlayer.position - transform.position;// Used to find if player is close
             float sqrLen = offset.sqrMagnitude;
