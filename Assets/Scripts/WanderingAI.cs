@@ -9,13 +9,8 @@ public class WanderingAI : MonoBehaviour
     public float obstacleRange = 5.0f;
     private bool _alive;
     GameObject player;
-    //GameObject controller;
     PlayerCharacter playerHealth;
-    //SceneController enemy;
-    //GameObject enemyType;
-    //GameObject enemy1;
-    //GameObject enemy2;
-    //GameObject enemy3;
+
     private Animator _animator;
     bool playerClose = false;
 
@@ -70,8 +65,9 @@ public class WanderingAI : MonoBehaviour
                         }
                         if (gameObject.tag == "Bystander")
                         {
+                            //transform.LookAt(transform.position);
                             float distance = Vector3.Distance(transform.position, detectPlayer.transform.position);
-                            //Debug.Log("Distance: " + distance);
+                            
                             //Run away from player
                             if (distance <  closeDistance)
                             {
@@ -80,16 +76,21 @@ public class WanderingAI : MonoBehaviour
                                 Vector3 newPos = transform.position + dirToPlayer;
 
                                 agent.SetDestination(newPos);
+                                playerClose = true;
+                                _animator.SetBool("playerClose", playerClose);
+                                //Debug.Log("Player Close: " + playerClose);
                             }
                         }
                         if (_fireball == null && attackDistance >= sqrLen && (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2"))
                         {
+                            _animator.SetBool("playerClose", false);
                             _animator.SetBool("attackPlayer", true);
                             _fireball = Instantiate(fireballPrefab) as GameObject;// Generate fireball and make it move
                             _fireball.transform.position =
                             transform.TransformPoint(Vector3.forward * 1.5f);
                             _fireball.transform.rotation = transform.rotation;
                             _animator.SetBool("attackPlayer", false);
+                            _animator.SetBool("playerClose", true);
                         }
                     }
                 }
