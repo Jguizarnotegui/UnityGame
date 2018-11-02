@@ -16,6 +16,8 @@ TagManager:
   - spawnPoint2
   - spawnPoint3
   - controller
+  - pistolHole
+  - akHole
   layers:
   - Default
   - TransparentFX

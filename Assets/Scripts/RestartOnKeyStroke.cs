@@ -9,7 +9,7 @@ public class RestartOnKeyStroke : MonoBehaviour
     Quaternion defaultRotation;
     Vector3 defaultScale;
     int defaultHealth = 100;
-    int defaultAmmo = 30;
+    int defaultAmmo = 300;
 
     GameObject player;
     PlayerCharacter restartHealth;

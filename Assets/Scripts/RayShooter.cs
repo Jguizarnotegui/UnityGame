@@ -10,6 +10,13 @@ public class RayShooter : MonoBehaviour
     PlayerCharacter playerAmmo;
     //PlayerCharacter playerHealth;
     WeaponSwitching currentWeapon;
+    public AudioClip hiAction;
+    AudioSource pistolShot;
+    public AudioClip impactor;
+    AudioSource akShot;
+    //public GameObject bulletHolePistol;
+    public GameObject pistolBulletHole;
+    public GameObject akBulletHole;
     // Use this for initialization
     void Start()
     {
@@ -21,6 +28,9 @@ public class RayShooter : MonoBehaviour
         //playerHealth = player.GetComponent<PlayerCharacter>();
         weaponHolder = GameObject.FindGameObjectWithTag("Guns");
         currentWeapon = weaponHolder.GetComponent<WeaponSwitching>();
+        pistolShot = GetComponent<AudioSource>();
+        akShot = GetComponent<AudioSource>();
+        //bulletHolePistol = GameObject.FindGameObjectWithTag("pistolHole");
     }
     /*void OnGUI()
     {
@@ -46,31 +56,40 @@ public class RayShooter : MonoBehaviour
                 if (target != null)
                 {
                     target.ReactToHit();
-                    //Debug.Log("Target hit hp is: " + target.enemyHealth);
                 }
                 // Shows on enemy when its hit
                 if (currentWeapon.selectedWeapon == 0)
-                    StartCoroutine(PistolIndicator(hit.point));
+                {
+                    pistolShot.PlayOneShot(hiAction, 0.75f);
+                    StartCoroutine(PistolIndicator(hit));
+                }
                 else
-                    StartCoroutine(AkIndicator(hit.point));
+                {
+                    akShot.PlayOneShot(impactor, 0.75f);
+                    StartCoroutine(AkIndicator(hit));
+                }
             }
         }
     }
     // Generate the sphere where player shot
-    private IEnumerator PistolIndicator(Vector3 pos)
+    private IEnumerator PistolIndicator(RaycastHit pos)
     {
-        GameObject pistolBullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        pistolBullet.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);// Bullet size
-        pistolBullet.transform.position = pos;
-        yield return new WaitForSeconds(0.01f);
-        Destroy(pistolBullet);
+        GameObject hole = Instantiate(pistolBulletHole, pos.point, Quaternion.FromToRotation(Vector3.up, pos.normal));
+        //GameObject pistolBullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //pistolBullet.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);// Bullet size
+        //pistolBullet.transform.position = pos;
+        yield return new WaitForSeconds(0.2f);
+        //Destroy(pistolBullet);
+        Destroy(hole);
     }
-    private IEnumerator AkIndicator(Vector3 pos)
+    private IEnumerator AkIndicator(RaycastHit pos)
     {
-        GameObject akBullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        akBullet.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);// Bullet size
-        akBullet.transform.position = pos;
-        yield return new WaitForSeconds(0.01f);
-        Destroy(akBullet);
+        GameObject hole = Instantiate(akBulletHole, pos.point, Quaternion.FromToRotation(Vector3.up, pos.normal));
+        //GameObject akBullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //akBullet.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);// Bullet size
+        //akBullet.transform.position = pos;
+        yield return new WaitForSeconds(0.1f);
+        //Destroy(akBullet);
+        Destroy(hole);
     }
 }
