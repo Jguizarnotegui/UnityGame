@@ -22,7 +22,7 @@ public class PlayerCharacter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _health = 100;
-        _ammo = 30;
+        _ammo = 300;
         playerMoving = GetComponent<FPSInput>();
         playerShooting = GetComponentInChildren<RayShooter>();
 	}
@@ -31,7 +31,7 @@ public class PlayerCharacter : MonoBehaviour {
         isDamaged = true;
         _health -= damage;
         healthBar.value = _health;
-        Debug.Log("Player hit hp: " + _health);
+        //Debug.Log("Player hit hp: " + _health);
         if (_health <= 0  && !isDead)
         {
             Debug.Log("Player Dead!");
@@ -66,10 +66,10 @@ public class PlayerCharacter : MonoBehaviour {
         if (col.collider.gameObject.tag == "Hotspot")
         {
             //Randomize player location on collision with hotspot
-            float playerx = Random.Range(-20, 20);
-            float playerz = Random.Range(-20, 20);
+            float playerx = Random.Range(-18, 18);
+            float playerz = Random.Range(-18, 18);
             Debug.Log("Teleport position: " + playerx + " " + playerz);
-            transform.position = new Vector3(playerx, 0, playerz);
+            transform.position = new Vector3(playerx, 1, playerz);
         }
         // When player touches health pack increase health by 1 and delete health pack
         if (col.collider.gameObject.tag == "Healthpack")

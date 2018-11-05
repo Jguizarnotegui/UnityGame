@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //Restarts the game when R key is pressed
-public class RestartOnKeyStroke : MonoBehaviour {
+public class RestartOnKeyStroke : MonoBehaviour
+{
     Vector3 defaultPosition;
     Quaternion defaultRotation;
     Vector3 defaultScale;
-    int defaultHealth = 5;
+    int defaultHealth = 100;
+    int defaultAmmo = 300;
 
     GameObject player;
     PlayerCharacter restartHealth;
     RayShooter playerShooting;
     FPSInput playerMoving;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
         restartHealth = player.GetComponent<PlayerCharacter>();
         defaultPosition = restartHealth.transform.position;
@@ -23,19 +26,26 @@ public class RestartOnKeyStroke : MonoBehaviour {
         playerMoving = GetComponent<FPSInput>();
         playerShooting = GetComponentInChildren<RayShooter>();
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("Restart Worked!");
+            GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy1");
             //Application.LoadLevel(Application.loadedLevel);
             restartHealth.transform.position = defaultPosition;
             restartHealth.transform.rotation = defaultRotation;
             restartHealth.transform.localScale = defaultScale;
             restartHealth._health = defaultHealth;
+            restartHealth._ammo = defaultAmmo;
             restartHealth.isDead = false;
             playerShooting.enabled = true;
             playerMoving.enabled = true;
+            foreach (GameObject them in allEnemies)
+            {
+                Destroy(them.gameObject);
+            }
         }
-	}
+    }
 }
