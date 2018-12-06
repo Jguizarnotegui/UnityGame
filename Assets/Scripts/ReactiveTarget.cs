@@ -7,12 +7,14 @@ public class ReactiveTarget : MonoBehaviour
 {
     public int enemyHealth;
     private Animator _animator;
+    GameObject enemy;
 
     void Start()
     {
         enemyHealth = 2;
         _animator = GetComponent<Animator>();
         _animator.SetInteger("enemyHealth", enemyHealth);
+
     }
     public void ReactToHit()
     {
