@@ -36,6 +36,10 @@ public class WanderingAI : MonoBehaviour
     // Use this for initialization
     void Update()
     {
+        if (!_alive)
+        {
+            agent.isStopped = true;
+        }
         if (_alive)// If enemy is alive
         {
             detectPlayer = player.transform;
