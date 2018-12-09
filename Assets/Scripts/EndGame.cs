@@ -11,6 +11,7 @@ public class EndGame : MonoBehaviour {
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerCharacter>();
+        
     }
 	
 	// Update is called once per frame
@@ -19,6 +20,9 @@ public class EndGame : MonoBehaviour {
 		if (playerHealth._health == 0)
         {
             SceneManager.LoadScene("EndScene");
+            Cursor.lockState = CursorLockMode.None;
+            //Set Cursor to not be visible
+            Cursor.visible = true;
         }
 	}
 }

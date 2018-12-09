@@ -45,7 +45,6 @@ public class MouseLook : MonoBehaviour
             float rotationY = transform.localEulerAngles.y + delta;
             transform.localEulerAngles =
             new Vector3(_rotationX, rotationY, 0);
-
         }
     }
     private void Start()
