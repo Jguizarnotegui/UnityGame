@@ -19,6 +19,23 @@ public class PlayerCharacter : MonoBehaviour {
     FPSInput playerMoving;
     public bool isDamaged;
     public bool isDead;
+
+    public void SavePlayer ()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+    public void LoadPlayer ()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        _health = data.health;
+        _ammo = data.ammo;
+
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        transform.position = position;
+    }
     // Use this for initialization
     void Start () {
         _health = 100;
