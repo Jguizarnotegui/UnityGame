@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 //Controls the enemy random spawning
 //This Is Where We Would Randomly Spawn One Of The NPC's
@@ -20,6 +21,12 @@ public class SceneController : MonoBehaviour
     PlayerCharacter playerPosition;
     Vector3 defaultPosition;
 
+    //enemy kill count for UI
+    public Text killCount;
+    public int killCountTracker;
+    WanderingAI kill;
+    int oldCount;
+
     public GameObject spawnPoint1;
     public GameObject spawnPoint2;
     public GameObject spawnPoint3;
@@ -38,6 +45,7 @@ public class SceneController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        killCountTracker = 0;
         player = GameObject.FindGameObjectWithTag("Player");
         playerPosition = player.GetComponent<PlayerCharacter>();
         spawnPoint1 = GameObject.FindGameObjectWithTag("spawnPoint1");
@@ -48,6 +56,7 @@ public class SceneController : MonoBehaviour
         int enemy2Count = GameObject.FindGameObjectsWithTag("Enemy2").Length;
         int bystanderCount = GameObject.FindGameObjectsWithTag("Bystander").Length;
         enemyCount = enemy1Count + enemy2Count + bystanderCount;
+        
         //
         if (enemyCount < 5 || enemyCount < 7)
         {
@@ -109,15 +118,25 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        kill = GetComponent<WanderingAI>();
         int enemy1Count = GameObject.FindGameObjectsWithTag("Enemy1").Length;
         int enemy2Count = GameObject.FindGameObjectsWithTag("Enemy2").Length;
         int bystanderCount = GameObject.FindGameObjectsWithTag("Bystander").Length;
         enemyCount = enemy1Count + enemy2Count + bystanderCount;
-
+        //Kill detect
+        if (enemyCount < oldCount)
+        {
+            //Kill count display
+            killCountTracker = ++killCountTracker;
+            killCount.text = killCountTracker.ToString();
+        }
+        oldCount = enemyCount;
         defaultPosition = playerPosition.transform.position;
 
+        
         if (enemyCount < 5 || enemyCount < 7)
         {
+            //killCountTracker = ++killCountTracker;
             enSpawn = Random.Range(1, 4);
             for(int i = 0; i <= enSpawn; i++)
             {

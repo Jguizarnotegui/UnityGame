@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.AI;
 //Controls enemy movement and shooting for both enemies, enemy 1 follows, enemy 2 doesn't
@@ -21,7 +22,7 @@ public class WanderingAI : MonoBehaviour
     public Transform detectPlayer;
     NavMeshAgent agent;
     public float closeDistance = 10.0f;
-    float attackDistance = 8.0f;
+    //float attackDistance = 8.0f;// remove this!!!!!!!!!!!
 
     private void Start()
     {
@@ -42,6 +43,14 @@ public class WanderingAI : MonoBehaviour
         }
         if (_alive)// If enemy is alive
         {
+            if (playerHealth._health == 0)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+            }
             detectPlayer = player.transform;
             Vector3 offset = detectPlayer.position - transform.position;// Used to find if player is close
             float sqrLen = offset.sqrMagnitude;
@@ -85,7 +94,7 @@ public class WanderingAI : MonoBehaviour
                                 //Debug.Log("Player Close: " + playerClose);
                             }
                         }
-                        if (_fireball == null && attackDistance >= sqrLen && (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2"))
+                        if (_fireball == null /*&& attackDistance >= sqrLen*/ && (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2"))
                         {
                             _animator.SetBool("playerClose", false);
                             _animator.SetBool("attackPlayer", true);

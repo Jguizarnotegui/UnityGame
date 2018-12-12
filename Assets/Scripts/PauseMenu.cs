@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +9,8 @@ public class PauseMenu : MonoBehaviour {
     public static bool gamePaused = false;
     public GameObject PauseMenuUI;
     PlayerCharacter player;
-	
-	// Update is called once per frame
-	void Update () {
+        // Update is called once per frame
+        void Update () {
 		if (Input.GetKeyDown(KeyCode.P))
         {
             if (gamePaused)
@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour {
     public void SaveGame()
     {
         SaveSystem.SavePlayer(player);//check if it works
-}
+    }
     public void QuitGame()
     {
         Debug.Log("Quitting game");
