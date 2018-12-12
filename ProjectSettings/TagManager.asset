@@ -18,6 +18,7 @@ TagManager:
   - controller
   - pistolHole
   - akHole
+  - JumpSpot
   layers:
   - Default
   - TransparentFX

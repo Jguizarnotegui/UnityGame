@@ -12,6 +12,14 @@ public class PlayerCharacter : MonoBehaviour {
     public Image damageImage;
     public Text ammoCount;
 
+    //Audio SFX
+    AudioSource teleportSound;
+    AudioSource healthSound;
+    AudioSource ammoSound;
+    public AudioClip tpSFX;
+    public AudioClip healthSFX;
+    public AudioClip ammoSFX;
+
     public float flashSpeed = 5f;
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
 
@@ -38,6 +46,9 @@ public class PlayerCharacter : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
+        teleportSound = GetComponent<AudioSource>();
+        healthSound = GetComponent<AudioSource>();
+        ammoSound = GetComponent<AudioSource>();
         _health = 100;
         _ammo = 300;
         playerMoving = GetComponent<FPSInput>();
@@ -82,6 +93,7 @@ public class PlayerCharacter : MonoBehaviour {
     {
         if (col.collider.gameObject.tag == "Hotspot")
         {
+            teleportSound.PlayOneShot(tpSFX, 0.75f);
             //Randomize player location on collision with hotspot
             float playerx = Random.Range(-18, 18);
             float playerz = Random.Range(-18, 18);
@@ -91,6 +103,7 @@ public class PlayerCharacter : MonoBehaviour {
         // When player touches health pack increase health by 1 and delete health pack
         if (col.collider.gameObject.tag == "Healthpack")
         {
+            healthSound.PlayOneShot(healthSFX, 0.75f);
             _health += 1;
             Destroy(col.gameObject);
             Debug.Log("Touched health pack hp is: " + _health);
@@ -98,6 +111,7 @@ public class PlayerCharacter : MonoBehaviour {
         // When player touches ammo pack increase ammo by 10 and delete ammo pack
         if (col.collider.gameObject.tag == "Ammopack")
         {
+            ammoSound.PlayOneShot(ammoSFX, 0.75f);
             _ammo += 10;
             Destroy(col.gameObject);
             Debug.Log("Touched ammo pack: " + _ammo);

@@ -14,6 +14,8 @@ public class WanderingAI : MonoBehaviour
 
     private Animator _animator;
     bool playerClose = false;
+    bool attackPlayer = false;
+    bool atJump = false;
 
     [SerializeField]
     private GameObject fireballPrefab;
@@ -22,7 +24,7 @@ public class WanderingAI : MonoBehaviour
     public Transform detectPlayer;
     NavMeshAgent agent;
     public float closeDistance = 10.0f;
-    //float attackDistance = 8.0f;// remove this!!!!!!!!!!!
+    //float attackDistance = 8.0f;// remove this
 
     private void Start()
     {
@@ -32,11 +34,15 @@ public class WanderingAI : MonoBehaviour
         detectPlayer = player.transform;
         _animator = GetComponent<Animator>();
         _animator.SetBool("playerClose", playerClose);
+        _animator.SetBool("attackPlayer", attackPlayer);
+        _animator.SetBool("atJump", atJump);
         agent = GetComponent<NavMeshAgent>();
     }
     // Use this for initialization
     void Update()
     {
+        attackPlayer = false;
+        _animator.SetBool("attackPlayer", attackPlayer);
         if (!_alive)
         {
             agent.isStopped = true;
@@ -73,6 +79,7 @@ public class WanderingAI : MonoBehaviour
                         if (gameObject.tag == "Enemy1")
                         {
                             agent.SetDestination(detectPlayer.position);
+                            
                             //float step = speed * Time.deltaTime;// Speed at which player is followed                
                             //transform.position = Vector3.MoveTowards(transform.position, detectPlayer.position, step);//Moves toward player but goes through wall to player
                         }
@@ -96,14 +103,12 @@ public class WanderingAI : MonoBehaviour
                         }
                         if (_fireball == null /*&& attackDistance >= sqrLen*/ && (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2"))
                         {
-                            _animator.SetBool("playerClose", false);
-                            _animator.SetBool("attackPlayer", true);
+                            attackPlayer = true;
+                            _animator.SetBool("attackPlayer", attackPlayer);
                             _fireball = Instantiate(fireballPrefab) as GameObject;// Generate fireball and make it move
                             _fireball.transform.position =
                             transform.TransformPoint(Vector3.forward * 1.5f);
                             _fireball.transform.rotation = transform.rotation;
-                            _animator.SetBool("attackPlayer", false);
-                            _animator.SetBool("playerClose", true);
                         }
                     }
                 }
@@ -118,5 +123,18 @@ public class WanderingAI : MonoBehaviour
     public void SetAlive(bool alive)
     {
         _alive = alive;
+    }
+    void OnControllerColliderHit(ControllerColliderHit col)
+    {
+        if (col.collider.gameObject.tag == "JumpSpot")
+            {
+                atJump = true;
+                _animator.SetBool("atJump", atJump);
+            }
+            else
+            {
+                atJump = false;
+                _animator.SetBool("atJump", atJump);
+            }
     }
 }

@@ -24,7 +24,6 @@ public class SceneController : MonoBehaviour
     //enemy kill count for UI
     public Text killCount;
     public int killCountTracker;
-    WanderingAI kill;
     int oldCount;
 
     public GameObject spawnPoint1;
@@ -118,7 +117,6 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        kill = GetComponent<WanderingAI>();
         int enemy1Count = GameObject.FindGameObjectsWithTag("Enemy1").Length;
         int enemy2Count = GameObject.FindGameObjectsWithTag("Enemy2").Length;
         int bystanderCount = GameObject.FindGameObjectsWithTag("Bystander").Length;
